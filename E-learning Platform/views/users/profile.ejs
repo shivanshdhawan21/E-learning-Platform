@@ -1,0 +1,70 @@
+<%- include('../partials/header') %>
+
+<main id="main" class="main-page">
+<!--==========================
+  About Section
+============================-->
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="profile-image" src="/img/user-noimage.jpg" alt="Profile image">
+      </div>
+      <div class="col-lg-8">
+        <div class="profile-info">
+          <h1 class="dash-title"><%= fullUser.first_name %>'s profile</h1>
+          <h2><%= currentUser.type %></h2>
+          <p><strong>Joined on:</strong> <%= fullUser._id.getTimestamp() %></p>
+          <a href="/users/<%= fullUser.username %>/edit" class="auth-buttons">Edit your profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--==========================
+  F.A.Q Section
+============================-->
+<section id="faq" class="">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+          <ul id="faq-list">
+
+            <li>
+              <p><strong>Username: </strong> <%= fullUser.username %></p>
+            </li>
+            <li>
+              <p><strong>First name: </strong> <%= fullUser.first_name %></p>
+            </li>
+            <li>
+              <p><strong>Last name: </strong> <%= fullUser.last_name %></p>
+            </li>
+            <li>
+              <p><strong>Email address: </strong> <%= fullUser.email %></p>
+            </li>
+            <li>
+              <p>
+                <strong>Registered courses: </strong>
+                <% fullUser.courses.forEach(function(course) { %>
+                  <a style="margin-right:20px" href="/courses/<%= course.course_id %>/details"><%= course.course_title %></a>
+                <% }); %>
+              </p>
+            </li>
+
+
+
+          </ul>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<%- include('../partials/footer') %>

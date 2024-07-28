@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+<main id="main" class="main-page">
+<!--==========================
+  Courses Section
+============================-->
+<section id="hotels" class="section-with-bg">
+
+  <div class="container">
+    <div class="section-header">
+      <h2>Latest Courses</h2>
+      <p>Her are some of our latest courses</p>
+    </div>
+
+    <div class="row">
+
+      <% courses.forEach(function(course) { %>
+        <div class="col-lg-4 col-md-6">
+          <div class="hotel">
+            <div class="hotel-img">
+              <img src="/img/teacher.jpeg" alt="Hotel 1" class="img-fluid">
+            </div>
+            <h3><a href="/courses/<%= course._id %>/details"><%= course.title %></a></h3>
+            <p><%= course.topic %></p>
+            <div class="stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <div class="">
+              <a class="btn card-btn" href="/courses/<%= course._id %>/details">View Course</a>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<%- include('../partials/footer') %>

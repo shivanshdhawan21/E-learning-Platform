@@ -1,0 +1,22 @@
+{
+  "name": "e-learn",
+  "scripts": {
+    "start": "node app"
+  },
+  "engines": {
+    "node": "9.11.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "ejs": "*",
+    "express": "*",
+    "express-session": "*",
+    "express-validator": "^5.3.0",
+    "mongoose": "*",
+    "morgan": "^1.9.1",
+    "passport": "*",
+    "passport-local": "*"
+  }
+}

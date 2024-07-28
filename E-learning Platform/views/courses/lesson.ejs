@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<main id="main" class="main-page">
+
+  <!--==========================
+    Contact Section
+  ============================-->
+  <section id="contact" class="section-bg">
+
+    <div class="container">
+
+      <a href="/courses/<%= course._id %>/details">Back to course</a>
+
+      <div class="section-header">
+        <h2><%= lesson.lesson_title %></h2>
+      </div>
+
+      <%= lesson.lesson_body %>
+
+    </div>
+  </section><!-- #contact -->
+
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<main id="main" class="main-page">
+
+<div class="padded-container">
+	<div class="section-header">
+		<h2>Add A Lesson</h2>
+	</div>
+
+	<form method="post" action="/instructors/<%= courseId %>/createLesson" class="create-form">
+		<div>
+			<input class="form-control" type="text" name="lesson_number" placeholder="Lesson Number" required>
+		</div>
+		<div>
+			<input class="form-control" type="text" name="lesson_title" placeholder="Lesson Title" required>
+		</div>
+		<div>
+			<textarea class="form-control" name="lesson_body" placeholder="Lesson Body" required></textarea>
+		</div>
+		<div>
+			<input class="form-button" type="submit" value="Add Lesson">
+		</div>
+	</form>
+</div>
+
+</main>
+
+<%- include('../partials/footer') %>

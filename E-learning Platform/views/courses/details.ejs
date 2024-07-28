@@ -1,0 +1,85 @@
+<%- include('../partials/header') %>
+
+<main id="main" class="main-page">
+
+	<!-- ==========================
+		Speaker Details Section
+	============================ -->
+	<section id="speakers-details" class="">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-6">
+					<img src="/img/teacher.jpeg" alt="Speaker 1" class="img-fluid">
+				</div>
+
+				<div class="col-md-6">
+					<div class="details">
+						<h2><%= course.title %></h2>
+						<p><strong>Instructor: </strong> <%= course.instructor %></p>
+						<p><%= course.description %></p>
+						<% if (currentUser) { %>
+							<% if (currentUser.type == 'instructor' && course.instructor == currentUser.username) { %>
+								<a class="btn general-btn" href="/instructors/<%= course._id %>/createLesson">
+									Add Lesson
+								</a>
+								<a class="btn general-btn" href="/instructors/modifyCourse/<%= course._id %>">
+									Modify Course
+								</a>
+								<% } else if (currentUser.type == 'student' && !course.students.some(function(student) { return student.student_username == currentUser.username})) { %>
+								  <form id="classRegForm" method="post" action="/<%= currentUser.type %>s/course/register">
+										<input type="hidden" name="student_username" value="<%= currentUser.username %>">
+										<input type="hidden" name="course_id" value="<%= course._id %>">
+										<input type="hidden" name="course_title" value="<%= course.title %>">
+										<input type="submit" class="btn general-btn" value="Register For This Course">
+									</form>
+								<% } %>
+						<% } else { %>
+							<a class="btn general-btn" href="/users/login">
+								Login to register for this course
+							</a>
+						<% } %>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+	<!--==========================
+		Schedule Section
+	============================-->
+	<section id="schedule" class="section-with-bg">
+		<div class="container">
+			<div class="section-header">
+				<h2>Course Lessons</h2>
+				<p>Here is our event schedule</p>
+			</div>
+
+			<div class="tab-content row justify-content-center">
+
+				<!-- Schdule Day 1 -->
+				<div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
+
+					<% course.lessons.forEach(function(lesson) { %>
+						<div class="row schedule-item">
+							<div class="col-md-2"><time><%= lesson.lesson_number %></time></div>
+							<div class="col-md-10">
+								<p><strong><%= lesson.lesson_title %></strong><a class="float-right" href="/courses/<%= course._id %>/lessons/<%= lesson._id %>">View Lesson</a></p>
+							</div>
+						</div>
+					<% }); %>
+
+				</div>
+				<!-- End Schdule Day 1 -->
+
+			</div>
+
+		</div>
+
+	</section>
+
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<main id="main" class="main-page">
+
+<div class="padded-container">
+	<h2 class="h3 mb-3 font-weight-normal">Edit your profile</h2>
+	<a href="/users/<%= currentUser.username %>">Back to Profile</a>
+
+	<form method="post" action="/users/<%= currentUser.username %>/edit" class="create-form">
+		<input type="hidden" name="username" value="<%= currentUser.username %>">
+		<label for="first_name">First Name</label>
+		<input type="text" name="first_name" class="form-control">
+		<br />
+		<label for="last_name">Last Name</label>
+		<input type="text" name="last_name" class="form-control">
+		<br />
+    <label for="email">Email</label>
+		<input type="text" name="email" class="form-control">
+		<br />
+		<input type="submit" class="btn btn-lg btn-primary btn-block" value="Update Profile">
+	</form>
+</div>
+
+</main>
+
+<%- include('../partials/footer') %>
